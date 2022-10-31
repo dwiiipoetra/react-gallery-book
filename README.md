@@ -12,7 +12,14 @@
 </p>
 <br/>
 
-# Vite ⚡
+# Resource
+- [Vite](https://vitejs.dev)
+- [React Bootstrap](https://react-bootstrap.github.io)
+- [Axios](https://axios-http.com)
+- [Redux](https://redux.js.org)
+- [React Redux](https://react-redux.js.org)
+
+## Vite ⚡
 
 > Next Generation Frontend Tooling
 
