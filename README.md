@@ -14,7 +14,7 @@
 
 # Resource
 - [Vite](https://vitejs.dev)
-- [React Bootstrap](https://react-bootstrap.github.io)
+- [Chakra UI](https://v2.chakra-ui.com)
 - [Axios](https://axios-http.com)
 - [Redux](https://redux.js.org)
 - [React Redux](https://react-redux.js.org)
