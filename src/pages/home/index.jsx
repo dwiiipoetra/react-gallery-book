@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Spinner from "react-bootstrap/Spinner";
-import BookCard from "../book-card";
-import Menu from "../menu";
+import BookCard from "../../components/book-card";
+import Menu from "../../components/menu";
+import { Grid, GridItem, SimpleGrid, Heading, Text, Box } from "@chakra-ui/react";
 
 const Home = () => {
   const [query, setQuery] = useState("");
@@ -59,10 +59,6 @@ const Home = () => {
     if (loading) {
       return (
         <div className="d-flex justify-content-center mt-3">
-          <Spinner
-            animation="border"
-            style={{ width: "2rem", height: "2rem" }}
-          />
         </div>
       );
     } else {
@@ -74,10 +70,57 @@ const Home = () => {
     }
   };
 
+  const boxStyles = {
+    p: "10px",
+    m: "10px",
+    textAlign: "center",
+    color: "white",
+    bg: "purple.400",
+    // filter: "blur(2px)"
+  }
   return (
     <>
-      <div className="row">
-        <Menu />
+      <Grid templateColumns="repeat(6, 1fr)" bg="gray.50">
+        <GridItem
+          p="30px"
+          as="aside"
+          colSpan="1"
+          bg="purple.400"
+          minHeight="100vh"
+        >
+          SIDEBAR
+        </GridItem>
+        
+        <GridItem
+          as="main"
+          colSpan="5"
+          p="40px"
+        >
+          <Menu />
+          <Text color="blue.500" fontWeight="bold">
+            This is the Gallery Book application React-based. There are many features like login, logout & register (with validation) and there are also search and filter book data features. API data retrieved from the https://googleapis.com/books/v1. This React-based application uses Redux for State Management.
+          </Text>
+          <Box sx={boxStyles}>
+            Hi Buddy!!!
+          </Box>
+
+          <SimpleGrid p="10px" spacing={10} minChildWidth="250px">
+          <Box bg="white" h="200px" border="1px solid"></Box>
+          <Box bg="white" h="200px" border="1px solid"></Box>
+          <Box bg="white" h="200px" border="1px solid"></Box>
+          <Box bg="white" h="200px" border="1px solid"></Box>
+
+          <Box bg="white" h="200px" border="1px solid"></Box>
+          <Box bg="white" h="200px" border="1px solid"></Box>
+          <Box bg="white" h="200px" border="1px solid"></Box>
+          <Box bg="white" h="200px" border="1px solid"></Box>
+
+          <Box bg="white" h="200px" border="1px solid"></Box>
+          <Box bg="white" h="200px" border="1px solid"></Box>
+          <Box bg="white" h="200px" border="1px solid"></Box>
+          <Box bg="white" h="200px" border="1px solid"></Box>
+          </SimpleGrid>
+        </GridItem>
 
         {/* Search Form */}
         {user ? (
@@ -104,13 +147,9 @@ const Home = () => {
               </button>
             </form>
           </div>
-        ) : (
-          <p className="text-center">
-            You must <Link to="/login">login</Link> for access the content
-          </p>
-        )}
+        ) : ('')}
         <div className="col-12">{handleCards()}</div>
-      </div>
+      </Grid>
     </>
   );
 };

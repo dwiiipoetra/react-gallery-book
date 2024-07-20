@@ -1,26 +1,26 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/home";
-import Login from "./components/login";
-import Register from "./components/register";
-import Footer from "./components/footer";
+import {
+  createBrowserRouter,
+  createRoutesFromElements, 
+  Route,
+  RouterProvider
+} from "react-router-dom";
+import Home from "./pages/home";
+import Login from "./pages/login";
+import Register from "./pages/register";
 
 function App() {
-  return (
-    <>
-      <div className="container">
-        <BrowserRouter>
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/login" element={<Login />} />
-            <Route exact path="/register" element={<Register />} />
-            <Route path="*" element={<h1>Pages Not Found</h1>} />
-          </Routes>
-        </BrowserRouter>
-        <Footer />
-      </div>
-    </>
-  );
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <>
+        <Route path="/" element={<Home />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="*" element={<h1>Pages Not Found</h1>} />
+      </>
+    )
+  )
+  return (<RouterProvider router={router}/>);
 }
 
 export default App;
