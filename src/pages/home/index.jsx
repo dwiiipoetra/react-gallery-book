@@ -82,18 +82,21 @@ const Home = () => {
     <>
       <Grid templateColumns="repeat(6, 1fr)" bg="gray.50">
         <GridItem
-          p="30px"
+          p={{ base: "20px", lg: "30px"}}
           as="aside"
-          colSpan="1"
+          // tampilan mobile akan fullwidth, large akan 1/3, xl akan 1/6
+          colSpan={{ base: 6, lg: 2, xl: 1 }}
           bg="purple.400"
-          minHeight="100vh"
+          // tampilan large akan membuat sidebar fullheight
+          minHeight={{ lg: "100vh" }}
         >
           SIDEBAR
         </GridItem>
         
         <GridItem
           as="main"
-          colSpan="5"
+          // tampilan mobile akan fullwidth, large akan 4/6, xl akan 5/6
+          colSpan={{ base: 6, lg: 4, xl: 5 }}
           p="40px"
         >
           <Menu />
@@ -105,20 +108,22 @@ const Home = () => {
           </Box>
 
           <SimpleGrid p="10px" spacing={10} minChildWidth="250px">
-          <Box bg="white" h="200px" border="1px solid"></Box>
-          <Box bg="white" h="200px" border="1px solid"></Box>
-          <Box bg="white" h="200px" border="1px solid"></Box>
-          <Box bg="white" h="200px" border="1px solid"></Box>
+            <Box bg="white" h="200px" border="1px solid">
+              <Text color={{base: "pink", md: "green"}}>Hai</Text>
+            </Box>
+            <Box bg="white" h="200px" border="1px solid"></Box>
+            <Box bg="white" h="200px" border="1px solid"></Box>
+            <Box bg="white" h="200px" border="1px solid"></Box>
 
-          <Box bg="white" h="200px" border="1px solid"></Box>
-          <Box bg="white" h="200px" border="1px solid"></Box>
-          <Box bg="white" h="200px" border="1px solid"></Box>
-          <Box bg="white" h="200px" border="1px solid"></Box>
+            <Box bg="white" h="200px" border="1px solid"></Box>
+            <Box bg="white" h="200px" border="1px solid"></Box>
+            <Box bg="white" h="200px" border="1px solid"></Box>
+            <Box bg="white" h="200px" border="1px solid"></Box>
 
-          <Box bg="white" h="200px" border="1px solid"></Box>
-          <Box bg="white" h="200px" border="1px solid"></Box>
-          <Box bg="white" h="200px" border="1px solid"></Box>
-          <Box bg="white" h="200px" border="1px solid"></Box>
+            <Box bg="white" h="200px" border="1px solid"></Box>
+            <Box bg="white" h="200px" border="1px solid"></Box>
+            <Box bg="white" h="200px" border="1px solid"></Box>
+            <Box bg="white" h="200px" border="1px solid"></Box>
           </SimpleGrid>
         </GridItem>
 
