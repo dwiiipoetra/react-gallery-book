@@ -3,6 +3,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import BookCard from "../../components/book-card";
+import Sidebar from "../../components/sidebar";
 import Menu from "../../components/menu";
 import { Grid, GridItem, SimpleGrid, Heading, Text, Box } from "@chakra-ui/react";
 
@@ -90,7 +91,7 @@ const Home = () => {
           // tampilan large akan membuat sidebar fullheight
           minHeight={{ lg: "100vh" }}
         >
-          SIDEBAR
+          <Sidebar/>
         </GridItem>
         
         <GridItem
