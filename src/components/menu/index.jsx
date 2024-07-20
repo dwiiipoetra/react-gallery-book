@@ -13,8 +13,8 @@ const Menu = () => {
 
   return (
     <>
-      <Flex as="nav" p="10px" alignItems="center" gap="10px">
-        <Heading as="h1">React Gallery Book</Heading>
+      <Flex as="nav" p="10px" mb="40px" alignItems="center">
+        <Heading as="h1" bg="purple.400" borderLeft="20px solid" borderColor="purple.200" color="white" pl="20px" pr="10px" py="8px">React Gallery Book</Heading>
         <Spacer/>
         <HStack spacing="20px">
           {user ? (

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import BookCard from "../../components/book-card";
+import { Form } from "react-router-dom";
+import BookCard from "../../components/bookCard";
 import Sidebar from "../../components/sidebar";
 import Menu from "../../components/menu";
-import { Grid, GridItem, SimpleGrid, Heading, Text, Box } from "@chakra-ui/react";
+import { Grid, GridItem, SimpleGrid, Text, Box, Spinner, FormControl, Input, Stack, Select, Wrap, WrapItem, Button } from "@chakra-ui/react";
+import { Search2Icon } from "@chakra-ui/icons";
 
 const Home = () => {
   const [query, setQuery] = useState("");
@@ -46,37 +47,36 @@ const Home = () => {
         smallThumbnail = item.volumeInfo.imageLinks.smallThumbnail;
       }
       return (
-        <div className="col-lg-3 col-md-4 col-6" key={item.id}>
-          <BookCard
-            smallThumbnail={smallThumbnail}
-            title={item.volumeInfo.title}
-            publisher={item.volumeInfo.publisher}
-            authors={item.volumeInfo.authors}
-            previewLink={item.volumeInfo.previewLink}
-          />
-        </div>
+        <BookCard
+          key={item.id}
+          smallThumbnail={smallThumbnail}
+          title={item.volumeInfo.title}
+          subtitle={item.volumeInfo.subtitle}
+          publisher={item.volumeInfo.publisher}
+          authors={item.volumeInfo.authors}
+          previewLink={item.volumeInfo.previewLink}
+        />
       );
     });
     if (loading) {
       return (
-        <div className="d-flex justify-content-center mt-3">
-        </div>
+        <Box align="center">
+          <Spinner
+            colorScheme="purple"
+          />
+        </Box>
       );
     } else {
-      return (
-        <div className="container my-5">
-          <div className="row">{items}</div>
-        </div>
-      );
+      return (items);
     }
   };
 
   const boxStyles = {
-    p: "10px",
-    m: "10px",
+    p: "30px",
+    my: "40px",
     textAlign: "center",
-    color: "white",
     bg: "purple.400",
+    borderRadius: "md",
     // filter: "blur(2px)"
   }
   return (
@@ -101,60 +101,65 @@ const Home = () => {
           p="40px"
         >
           <Menu />
-          <Text color="blue.500" fontWeight="bold">
+          <Text color="purple.400" fontWeight="bold">
             This is the Gallery Book application React-based. There are many features like login, logout & register (with validation) and there are also search and filter book data features. API data retrieved from the https://googleapis.com/books/v1. This React-based application uses Redux for State Management.
           </Text>
           <Box sx={boxStyles}>
-            Hi Buddy!!!
+            <Form onSubmit={handleSubmit}>
+              <FormControl isRequired="true">
+                <Stack spacing={4}>
+                  <Input
+                    type="text"
+                    bg="gray.100"
+                    colorScheme="purple"
+                    placeholder="Keyword"
+                    value={query}
+                    onChange={queryHandleChange}
+                  />
+                  {/* <Input
+                    type="text"
+                    placeholder="Max Results"
+                    value={maxResults}
+                    onChange={maxResultsHandleChange}
+                  /> */}
+                  <Select
+                    bg="gray.100"
+                    colorScheme="purple"
+                    placeholder="Max Results"
+                    value={maxResults}
+                    onChange={maxResultsHandleChange}
+                  >
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                  </Select>
+                </Stack>
+                <Wrap>
+                  <WrapItem>
+                    <Button
+                    type="submit"
+                    colorScheme="purple"
+                    mt="20px"
+                    align="left"
+                    leftIcon={<Search2Icon/>}
+                    >
+                      Find Your Favorite Books
+                    </Button>
+                  </WrapItem>
+                </Wrap>
+              </FormControl>
+            </Form>
           </Box>
 
-          <SimpleGrid p="10px" spacing={10} minChildWidth="250px">
-            <Box bg="white" h="200px" border="1px solid">
-              <Text color={{base: "pink", md: "green"}}>Hai</Text>
-            </Box>
-            <Box bg="white" h="200px" border="1px solid"></Box>
-            <Box bg="white" h="200px" border="1px solid"></Box>
-            <Box bg="white" h="200px" border="1px solid"></Box>
-
-            <Box bg="white" h="200px" border="1px solid"></Box>
-            <Box bg="white" h="200px" border="1px solid"></Box>
-            <Box bg="white" h="200px" border="1px solid"></Box>
-            <Box bg="white" h="200px" border="1px solid"></Box>
-
-            <Box bg="white" h="200px" border="1px solid"></Box>
-            <Box bg="white" h="200px" border="1px solid"></Box>
-            <Box bg="white" h="200px" border="1px solid"></Box>
-            <Box bg="white" h="200px" border="1px solid"></Box>
+          <SimpleGrid spacing={10} minChildWidth="300px">
+            {/* {user ? ( */}
+            { handleCards() }
+            {/* <Box bg="white" h="200px" border="1px solid"> */}
+              {/* <Text color={{base: "pink", md: "green"}}>Hai</Text> */}
+            {/* </Box> */}
+            {/* ) : ('')} */}
           </SimpleGrid>
         </GridItem>
-
-        {/* Search Form */}
-        {user ? (
-          <div className="col-12">
-            <form className="d-flex mt-2" role="search" onSubmit={handleSubmit}>
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-                value={query}
-                onChange={queryHandleChange}
-              />
-              <input
-                className="form-control me-2"
-                type="text"
-                placeholder="Max Results"
-                style={{ width: "150px" }}
-                value={maxResults}
-                onChange={maxResultsHandleChange}
-              />
-              <button className="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
-          </div>
-        ) : ('')}
-        <div className="col-12">{handleCards()}</div>
       </Grid>
     </>
   );

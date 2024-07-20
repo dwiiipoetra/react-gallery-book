@@ -12,6 +12,9 @@
 </p>
 <br/>
 
+# Created by
+  [Dwi Waluyo Putranto](https://id.linkedin.com/in/dwi-waluyo-putranto/)
+
 # Resource
 - [Vite](https://vitejs.dev)
 - [Chakra UI](https://v2.chakra-ui.com)

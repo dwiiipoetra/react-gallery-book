@@ -8,7 +8,7 @@ const Sidebar = () => {
       <ListItem>
         <NavLink to="/">
           <ListIcon as={CalendarIcon} color="white" />
-          Dashboard
+          List Gallery
         </NavLink>
       </ListItem>
       <ListItem>
