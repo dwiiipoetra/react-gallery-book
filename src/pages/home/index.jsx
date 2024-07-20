@@ -116,12 +116,6 @@ const Home = () => {
                     value={query}
                     onChange={queryHandleChange}
                   />
-                  {/* <Input
-                    type="text"
-                    placeholder="Max Results"
-                    value={maxResults}
-                    onChange={maxResultsHandleChange}
-                  /> */}
                   <Select
                     bg="gray.100"
                     colorScheme="purple"
@@ -154,9 +148,6 @@ const Home = () => {
           <SimpleGrid spacing={10} minChildWidth="300px">
             {/* {user ? ( */}
             { handleCards() }
-            {/* <Box bg="white" h="200px" border="1px solid"> */}
-              {/* <Text color={{base: "pink", md: "green"}}>Hai</Text> */}
-            {/* </Box> */}
             {/* ) : ('')} */}
           </SimpleGrid>
         </GridItem>

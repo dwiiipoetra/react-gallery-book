@@ -11,13 +11,6 @@ const BookCard = ({
   previewLink,
 }) => {
   return (
-    // <Box bg="white" h="200px" border="1px solid">
-    //   <p></p>
-    //   <p>{}</p>
-    //   <p>{}</p>
-    //   <p>{}</p>
-    //   <p>{}</p>
-    // </Box>
     <Card borderTop='4px' borderColor='purple.400'>
       <CardBody align='center'>
         <Image
