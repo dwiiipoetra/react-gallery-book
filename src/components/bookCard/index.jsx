@@ -10,23 +10,23 @@ const BookCard = ( { smallThumbnail, title, subtitle, publisher, authors, previe
     <Card borderTop='4px' borderColor='purple.400'>
       <CardBody align='center'>
         <Image
-          src={smallThumbnail}
-          alt={title}
+          src={smallThumbnail || ''}
+          alt={title || ''}
           borderRadius='lg'
         />
         <Stack mt='6' spacing='3'>
-          <Heading size='md'>{title}</Heading>
+          <Heading size='md'>{title ? title : ''}</Heading>
           <Flex alignItems="center">
-            <Avatar mr="10px" color="white" bg="purple.400" name={avatarStr.join(' ').toString()}/>
+            <Avatar mr="10px" color="white" bg="purple.400" name={avatarStr?.join(' ').toString() || ''}/>
             <Box>
-              <Heading size='xs' textAlign="left">{authors.join(', ')}</Heading>
+              <Heading size='xs' textAlign="left">{ authors?.join(', ') || ''}</Heading>
             </Box>
           </Flex>
           <Text align='left'>
-            {subtitle ? subtitle : 'No subtitle'}
+            {subtitle || 'No subtitle'}
           </Text>
           <Text align='left' color='purple' fontWeight="medium">
-            Publisher : {publisher ? publisher : 'Unknown'}
+            Publisher : {publisher || 'Unknown'}
           </Text>
         </Stack>
       </CardBody>
@@ -43,7 +43,7 @@ const BookCard = ( { smallThumbnail, title, subtitle, publisher, authors, previe
           </Text>
         </Button>
         <Button variant='solid' colorScheme='purple' leftIcon={<ExternalLinkIcon/>}>
-          <NavLink to={previewLink}>
+          <NavLink to={previewLink || ''}>
             <Text
               fontSize={{ base: 'xs'}}
             >

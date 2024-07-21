@@ -9,6 +9,8 @@ import { Grid, GridItem, SimpleGrid, Text, Box, Spinner, FormControl, Input, Sta
 import { Search2Icon } from "@chakra-ui/icons";
 
 const Home = () => {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const [query, setQuery] = useState("");
   const [maxResults, setMaxResults] = useState(10);
   const [loading, setLoading] = useState(false);
@@ -21,7 +23,7 @@ const Home = () => {
     setLoading(true);
     axios
       .get(
-        `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=${maxResults}`
+        `${apiUrl}/books/v1/volumes?q=${query}&maxResults=${maxResults}`
       )
       .then((res) => {
         if (res.data.items.length > 0) {
