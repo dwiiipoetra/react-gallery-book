@@ -43,7 +43,7 @@ const Home = () => {
   const handleCards = () => {
     const items = cards.map((item, i) => {
       let smallThumbnail = "";
-      if (item.volumeInfo.imageLinks.smallThumbnail) {
+      if (item.volumeInfo.imageLinks?.smallThumbnail) {
         smallThumbnail = item.volumeInfo.imageLinks.smallThumbnail;
       }
       return (

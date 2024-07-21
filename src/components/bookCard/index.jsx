@@ -2,14 +2,15 @@ import { ExternalLinkIcon, ViewIcon } from "@chakra-ui/icons";
 import { Flex, Card, CardBody, Image, Stack, Heading, Text, Divider, CardFooter, ButtonGroup, Button, Box } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
 
-const BookCard = ({
-  smallThumbnail,
-  title,
-  subtitle,
-  publisher,
-  authors,
-  previewLink,
-}) => {
+const BookCard = ( { smallThumbnail, title, subtitle, publisher, authors, previewLink } ) => {
+  let avatarStr = ''
+  if (authors.length === 1) {
+    avatarStr = authors.toString().split(' ')
+  } else {
+    avatarStr = authors[0].toString().split(' ')
+  }
+  console.log(avatarStr,authors);
+  
   return (
     <Card borderTop='4px' borderColor='purple.400'>
       <CardBody align='center'>
@@ -20,12 +21,14 @@ const BookCard = ({
         />
         <Stack mt='6' spacing='3'>
           <Heading size='md'>{title}</Heading>
-          <Flex>
-            <Box w='50px' h='50px'>
-              <Text>AV</Text>
+          <Flex alignItems="center">
+            <Box minW='50px' minH='50px' alignContent="center" mr="10px" p="4px" rounded="50%" color="white" bg="purple.400" fontWeight="bold">
+              <Text>
+                {authors.length === 1 ? avatarStr[0][0] + avatarStr[1][0] : avatarStr[0][0] + avatarStr[1][0]}
+              </Text>
             </Box>
             <Box>
-              <Heading size='s'>{authors}</Heading>
+              <Heading size='xs' textAlign="left">{authors.join(', ')}</Heading>
             </Box>
           </Flex>
           <Text align='left'>
