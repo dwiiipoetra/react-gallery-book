@@ -98,7 +98,7 @@ const Home = () => {
           as="main"
           // tampilan mobile akan fullwidth, large akan 4/6, xl akan 5/6
           colSpan={{ base: 6, lg: 4, xl: 5 }}
-          p="40px"
+          p="20px"
         >
           <Menu />
           <Text color="purple.400" fontWeight="bold">
@@ -145,7 +145,10 @@ const Home = () => {
             </Form>
           </Box>
 
-          <SimpleGrid spacing={10} minChildWidth="300px">
+          {/* <SimpleGrid spacing={10} minChildWidth="300px"> */}
+          {/* <SimpleGrid spacing={10} columns={{base: 1, sm: 2, md: 2, xl: 3}}> */}
+          <SimpleGrid spacing={10} templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)', xl: 'repeat(3, 1fr)' }}>
+            
             {/* {user ? ( */}
             { handleCards() }
             {/* ) : ('')} */}

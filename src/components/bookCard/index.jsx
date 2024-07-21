@@ -36,10 +36,20 @@ const BookCard = ( { smallThumbnail, title, subtitle, publisher, authors, previe
     <CardFooter>
       <ButtonGroup spacing='2'>
         <Button variant='outline' colorScheme='purple' leftIcon={<ViewIcon/>}>
-          Open Here
+          <Text
+            fontSize={{ base: 'xs'}}
+          >
+            Open Here
+          </Text>
         </Button>
         <Button variant='solid' colorScheme='purple' leftIcon={<ExternalLinkIcon/>}>
-          <NavLink to={previewLink}>Read More</NavLink>
+          <NavLink to={previewLink}>
+            <Text
+              fontSize={{ base: 'xs'}}
+            >
+              Read More
+            </Text>
+          </NavLink>
         </Button>
       </ButtonGroup>
     </CardFooter>
