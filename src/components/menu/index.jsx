@@ -46,7 +46,7 @@ const Menu = () => {
         </HStack>
       </Flex>
       
-      <Divider my="10px" border="1px solid" borderColor="purple.400"/>
+      <Divider my="20px" border="1px solid" borderColor="purple.400"/>
       {/* <Flex bg="gray.200" justify="space-between" wrap="wrap" gap="2">
         <Box w="150px" h="50px" bg="red">Column 1</Box>
         <Box w="150px" h="50px" bg="red">Column 2</Box>

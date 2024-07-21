@@ -7,7 +7,7 @@ const BookCard = ( { smallThumbnail, title, subtitle, publisher, authors, previe
   if (authors) authors.length === 1 ? avatarStr = authors.toString() : avatarStr = authors[0].toString()
   
   return (
-    <Card borderTop='4px' borderColor='purple.400'>
+    <Card borderTop='4px' borderColor='brand.base'>
       <CardBody align='center'>
         <Image
           minH="200px"
@@ -18,7 +18,7 @@ const BookCard = ( { smallThumbnail, title, subtitle, publisher, authors, previe
         <Stack mt='6' spacing='3'>
           <Heading size='md'>{title}</Heading>
           <Flex alignItems="center">
-            <Avatar mr="10px" color="white" bg="purple.400" name={avatarStr}/>
+            <Avatar mr="10px" color="white" bg="brand.base" name={avatarStr}/>
             <Box>
               <Heading size='xs' textAlign="left">{authors.length > 1 ? authors.join(', ') : authors}</Heading>
             </Box>
