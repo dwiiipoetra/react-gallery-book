@@ -1,4 +1,4 @@
-import { Flex, Spacer, Box, HStack, Heading, Text, Button } from "@chakra-ui/react";
+import { Flex, Spacer, Box, HStack, Avatar, Heading, Text, Button } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,17 +19,18 @@ const Menu = () => {
         <HStack spacing="20px">
           {user ? (
             <>
-            <Box bg="gray.200" p="10px">M</Box>
-            <Text>{user.email} (Logout)</Text>
-            <Link
-              to="#"
-              onClick={() => {
-                dispatch({
-                  type: "LOGOUT",
-                });
-              }}
-            >
-            </Link>
+              <Avatar name="Dwi Putra" bg="purple.400"/>
+              <Text>{user.email}</Text>
+              <Button colorScheme="purple">
+                <Link
+                  to="#"
+                  onClick={() => {
+                    dispatch({
+                      type: "LOGOUT",
+                    });
+                  }}
+                >Logout</Link>
+              </Button>
             </>
           ) : (
             <Button colorScheme="purple">
