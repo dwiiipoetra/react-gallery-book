@@ -51,12 +51,12 @@ const Home = () => {
       return (
         <BookCard
           key={item.id}
-          smallThumbnail={smallThumbnail}
-          title={item.volumeInfo.title}
-          subtitle={item.volumeInfo.subtitle}
-          publisher={item.volumeInfo.publisher}
-          authors={item.volumeInfo.authors}
-          previewLink={item.volumeInfo.previewLink}
+          smallThumbnail={smallThumbnail || ''}
+          title={item.volumeInfo.title || ''}
+          subtitle={item.volumeInfo.subtitle || 'No subtitle'}
+          publisher={item.volumeInfo.publisher || 'Unknown'}
+          authors={item.volumeInfo?.authors || ''}
+          previewLink={item.volumeInfo.previewLink || ''}
         />
       );
     });

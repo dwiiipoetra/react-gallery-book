@@ -4,29 +4,30 @@ import { NavLink } from "react-router-dom";
 
 const BookCard = ( { smallThumbnail, title, subtitle, publisher, authors, previewLink } ) => {
   let avatarStr = ''
-  authors?.length === 1 ? avatarStr = authors.toString().split(' ') : avatarStr = authors[0].toString().split(' ')
+  if (authors) authors.length === 1 ? avatarStr = authors.toString() : avatarStr = authors[0].toString()
   
   return (
     <Card borderTop='4px' borderColor='purple.400'>
       <CardBody align='center'>
         <Image
-          src={smallThumbnail || ''}
-          alt={title || ''}
+          minH="200px"
+          src={smallThumbnail || '/default.png'}
+          alt={title}
           borderRadius='lg'
         />
         <Stack mt='6' spacing='3'>
-          <Heading size='md'>{title ? title : ''}</Heading>
+          <Heading size='md'>{title}</Heading>
           <Flex alignItems="center">
-            <Avatar mr="10px" color="white" bg="purple.400" name={avatarStr?.join(' ').toString() || ''}/>
+            <Avatar mr="10px" color="white" bg="purple.400" name={avatarStr}/>
             <Box>
-              <Heading size='xs' textAlign="left">{ authors?.join(', ') || ''}</Heading>
+              <Heading size='xs' textAlign="left">{authors.length > 1 ? authors.join(', ') : authors}</Heading>
             </Box>
           </Flex>
           <Text align='left'>
-            {subtitle || 'No subtitle'}
+            {subtitle}
           </Text>
           <Text align='left' color='purple' fontWeight="medium">
-            Publisher : {publisher || 'Unknown'}
+            Publisher : {publisher}
           </Text>
         </Stack>
       </CardBody>
@@ -43,7 +44,7 @@ const BookCard = ( { smallThumbnail, title, subtitle, publisher, authors, previe
           </Text>
         </Button>
         <Button variant='solid' colorScheme='purple' leftIcon={<ExternalLinkIcon/>}>
-          <NavLink to={previewLink || ''}>
+          <NavLink to={previewLink}>
             <Text
               fontSize={{ base: 'xs'}}
             >
