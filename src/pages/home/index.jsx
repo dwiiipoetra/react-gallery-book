@@ -18,22 +18,31 @@ const Home = () => {
 
   const user = useSelector((state) => state.user);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    axios
-      .get(
-        `${apiUrl}/books/v1/volumes?q=${query}&maxResults=${maxResults}`
-      )
-      .then((res) => {
-        if (res.data.items.length > 0) {
-          setCards(res.data.items);
-          setLoading(false);
+      // axios.get(`${apiUrl}/books/v1/volumes?q=${query}&maxResults=${maxResults}`)
+      // .then((res) => {
+      //   if (res.data.items.length > 0) {
+      //     setCards(res.data.items);
+      //     setLoading(false);
+      //   }
+      // })
+      // .catch((err) => {
+      //   console.log("error ", err);
+      // });
+
+      try {
+        const response = await fetch(import.meta.env.VITE_API_URL);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
         }
-      })
-      .catch((err) => {
-        console.log("error ", err);
-      });
+        const data = await response.json();
+        setCards(data.items);
+        setLoading(false);
+      } catch (error) {
+        console.log("error ", error);
+      }
   };
   const queryHandleChange = (e) => {
     setQuery(e.target.value);

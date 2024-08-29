@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  Stack,
+  Heading,
+  useBreakpointValue
+} from '@chakra-ui/react';
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -25,98 +35,70 @@ const Register = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center py-5">
-      <form>
-        <div className="form-outline mb-4">
-          <p className="h3">Register</p>
-        </div>
-
-        <div className="form-outline mb-4">
-          <label className="form-label" htmlFor="form2Example1">
-            Username
-          </label>
-          <input
+    <Box
+    maxW="md"
+    mx="auto"
+    mt={8}
+    p={4}
+    borderWidth={1}
+    borderRadius="lg"
+    boxShadow="md"
+    >
+    <Heading as="h2" size="lg" textAlign="center" mb={6}>
+      Register
+    </Heading>
+    <form onSubmit={handleRegister}>
+      <Stack spacing={4}>
+      <FormControl id="username" isRequired>
+          <FormLabel>Username</FormLabel>
+          <Input
             type="text"
-            id="form2Example1"
-            className="form-control"
+            placeholder="Enter your username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-        </div>
-        <div className="form-outline mb-4">
-          <label className="form-label" htmlFor="form2Example2">
-            Email address
-          </label>
-          <input
+        </FormControl>
+        <FormControl id="email" isRequired>
+          <FormLabel>Email Address</FormLabel>
+          <Input
             type="email"
-            id="form2Example2"
-            className="form-control"
+            placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </div>
-
-        <div className="form-outline mb-4">
-          <label className="form-label" htmlFor="form2Example3">
-            Password
-          </label>
-          <input
+        </FormControl>
+        <FormControl id="password" isRequired>
+          <FormLabel>Password</FormLabel>
+          <Input
             type="password"
-            id="form2Example3"
-            className="form-control"
+            placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
-
-        <div className="form-outline mb-4">
-          <label className="form-label" htmlFor="form2Example4">
-            Confirm Password
-          </label>
-          <input
+        </FormControl>
+        <FormControl id="confirm-password" isRequired>
+          <FormLabel>Confirm Password</FormLabel>
+          <Input
             type="password"
-            id="form2Example4"
-            className="form-control"
+            placeholder="Enter your confirm password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
-        </div>
-
-        <div className="row mb-4">
-          <div className="col d-flex justify-content-center">
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id="form2Example31"
-              />
-              <label className="form-check-label" htmlFor="form2Example31">
-                Remember me
-              </label>
-            </div>
-          </div>
-
-          <div className="col">
-            <a href="#">Forgot password?</a>
-          </div>
-        </div>
-
-        <button
-          type="button"
-          className="btn btn-primary btn-block mb-4"
-          onClick={handleRegister}
-        >
-          REGISTER
-        </button>
-
-        <div className="text-center">
-          <p>
+        </FormControl>
+        <p>
             Already have an account? <Link to="/login">Login</Link>
-          </p>
-        </div>
-      </form>
-    </div>
+        </p>
+        <Button
+          type="submit"
+          colorScheme="purple"
+          size={useBreakpointValue({ base: 'md', md: 'lg' })}
+          width="full"
+        >
+          Register
+        </Button>
+      </Stack>
+    </form>
+    </Box>
   );
 };
 
