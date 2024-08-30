@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { Form } from "react-router-dom";
+import { Link, Form } from "react-router-dom";
 import BookCard from "../../components/bookCard";
 import Sidebar from "../../components/sidebar";
 import Menu from "../../components/menu";
@@ -117,7 +117,8 @@ const Home = () => {
           </Text>
           <Box sx={boxStyles}>
             <Form onSubmit={handleSubmit}>
-              <FormControl isRequired="true">
+              {user ?
+              (<FormControl isRequired="true">
                 <Stack spacing={4}>
                   <Input
                     type="text"
@@ -153,17 +154,22 @@ const Home = () => {
                   </WrapItem>
                 </Wrap>
               </FormControl>
+              )
+              :
+              <Text color="red.300" fontWeight="semibold">
+                You must <Link to="/login">login</Link> to access this page!
+              </Text>
+              }
             </Form>
           </Box>
 
           {/* <SimpleGrid spacing={10} minChildWidth="300px"> */}
           {/* <SimpleGrid spacing={10} columns={{base: 1, sm: 2, md: 2, xl: 3}}> */}
-          <SimpleGrid spacing={10} templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)', xl: 'repeat(3, 1fr)' }}>
-            
-            {/* {user ? ( */}
-            { handleCards() }
-            {/* ) : ('')} */}
-          </SimpleGrid>
+          {user &&
+            <SimpleGrid spacing={10} templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)', xl: 'repeat(3, 1fr)' }}>
+            {handleCards()}
+            </SimpleGrid>
+          }
         </GridItem>
       </Grid>
     </>
